@@ -1,0 +1,77 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <TabControl Margin="10">
+
+        <TabItem Header="Генерация">
+            <StackPanel Margin="15">
+                <TextBlock Text="Размер массива N (5–100000):" />
+                <TextBox x:Name="txtSize" Width="200" Margin="0,5"/>
+                <TextBlock Text="Тип данных:" Margin="0,10,0,0"/>
+                <ComboBox x:Name="cmbMode" Width="220" SelectedIndex="0">
+                    <ComboBoxItem Content="Случайный"/>
+                    <ComboBoxItem Content="Отсортированный"/>
+                    <ComboBoxItem Content="Обратный порядок"/>
+                </ComboBox>
+                <Button Content="Сгенерировать" Width="200" Margin="0,10"
+                        Click="BtnGenerate_Click"/>
+                <TextBlock x:Name="lblGenResult" FontWeight="Bold" Margin="0,5"/>
+                <TextBox x:Name="txtArray" Height="150" Margin="0,10"
+                         TextWrapping="Wrap" AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Поиск">
+            <StackPanel Margin="15">
+                <TextBlock Text="Искомое число:" />
+                <TextBox x:Name="txtTarget" Width="200" Margin="0,5"/>
+                <TextBlock Text="Алгоритм:" />
+                <ComboBox x:Name="cmbAlgorithm" Width="220" SelectedIndex="0">
+                    <ComboBoxItem Content="Линейный"/>
+                    <ComboBoxItem Content="Бинарный"/>
+                    <ComboBoxItem Content="Интерполяционный"/>
+                    <ComboBoxItem Content="Хэш-таблица"/>
+                </ComboBox>
+                <Button Content="Найти" Width="200" Margin="0,10"
+                        Click="BtnSearch_Click"/>
+                <TextBlock x:Name="lblSearchResult" FontWeight="Bold" Margin="0,5"/>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Сравнение">
+            <StackPanel Margin="15">
+                <Button Content="Сравнить все" Width="200"
+                        HorizontalAlignment="Left"
+                        Click="BtnCompare_Click"/>
+                <DataGrid x:Name="gridResults" Margin="0,10"
+                          AutoGenerateColumns="True" IsReadOnly="True"
+                          Height="400"/>
+            </StackPanel>
+        </TabItem>
+
+        <TabItem Header="Визуализация">
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Сброс" Width="120" Margin="0,0,10,0"
+                            Click="BtnVizReset_Click"/>
+                    <Button Content="Шаг" Width="120"
+                            Click="BtnVizStep_Click"/>
+                </StackPanel>
+                <Canvas x:Name="canvas" Grid.Row="1"
+                        Background="White" Margin="0,10"/>
+            </Grid>
+        </TabItem>
+
+    </TabControl>
+
+</Window>
